@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(
+          to left,
+          #ff000000,
+          #b70000,
+          #7f0000,
+          #ff0000
+        );
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        color: white;
+        background-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #Main {
+        min-width: 210px;
+        min-height: 210px;
+        background-color: rgba(0, 0, 0, 0.612);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 5px;
+      }
+
+      .box {
+        background-color: blue;
+        border: none;
+        width: 65px;
+        height: 65px;
+        text-align: center;
+        color: aliceblue;
+        font-weight: 900;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #555;
+      }
+      .display {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Tic-Tac-Toe</h1>
+    </header>
+    <main>
+      <div id="select_type">
+        <button id="p2">2 players</button>
+        <button id="p1">1 player</button>
+      </div>
+      <div class="display" id="gameBoard">
+        <div id="Main">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        <button id="btn_to_reset">Reset</button>
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const boxes = document.querySelectorAll(".box");
+        const winningPatterns = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+
+        // Check Winner Function
+        function checkWinner() {
+          for (let pattern of winningPatterns) {
+            let [a, b, c] = pattern;
+            if (
+              boxes[a].innerText !== "" &&
+              boxes[a].innerText === boxes[b].innerText &&
+              boxes[a].innerText === boxes[c].innerText
+            ) {
+              setTimeout(() => {
+                alert(boxes[a].innerText + " wins!");
+                resetGame();
+              }, 100);
+              return true;
+            }
+          }
+          // Check for Draw
+          if ([...boxes].every((box) => box.innerText !== "")) {
+            setTimeout(() => {
+              alert("It's a draw!");
+              resetGame();
+            }, 100);
+            return true;
+          }
+          return false;
+        }
+
+        // Reset Game
+        function resetGame() {
+          boxes.forEach((box) => {
+            box.innerText = "";
+          });
+        }
+
+        // 2 Player Mode
+        function p2_p() {
+          document.getElementById("select_type").classList.add("display");
+          document.getElementById("gameBoard").classList.remove("display");
+          let Is_Turn_O = true;
+
+          boxes.forEach((box) => {
+            box.addEventListener("click", () => {
+              if (box.innerText === "") {
+                box.innerText = Is_Turn_O ? "O" : "X";
+                Is_Turn_O = !Is_Turn_O;
+                checkWinner();
+              }
+            });
+          });
+        }
+
+        // 1 Player Mode with Smart AI
+        function p1_p() {
+          document.getElementById("select_type").classList.add("display");
+          document.getElementById("gameBoard").classList.remove("display");
+
+          boxes.forEach((box) => {
+            box.addEventListener("click", () => {
+              if (box.innerText === "") {
+                box.innerText = "X";
+                if (!checkWinner()) {
+                  setTimeout(computerMove, 1000);
+                }
+              }
+            });
+          });
+        }
+
+        // Computer Move (Smart AI using Minimax)
+        function computerMove() {
+          const bestMove = minimax(boxes, "O").index;
+          boxes[bestMove].innerText = "O";
+          checkWinner();
+        }
+
+        // Minimax Algorithm
+        function minimax(newBoard, player) {
+          const emptyBoxes = [...newBoard].filter(
+            (box) => box.innerText === ""
+          );
+
+          if (checkWin(newBoard, "X")) return { score: -2 };
+          if (checkWin(newBoard, "O")) return { score: 2 };
+          if (emptyBoxes.length === 0) return { score: 0 };
+          const moves = [];
+
+          emptyBoxes.forEach((emptyBox) => {
+            const boxIndex = [...newBoard].indexOf(emptyBox);
+            newBoard[boxIndex].innerText = player;
+
+            let result;
+            if (player === "O") {
+              result = minimax(newBoard, "X");
+            } else {
+              result = minimax(newBoard, "O");
+            }
+
+            newBoard[boxIndex].innerText = "";
+            moves.push({ index: boxIndex, score: result.score });
+          });
+
+          let bestMove;
+          if (player === "O") {
+            let bestScore = -Infinity;
+            moves.forEach((move) => {
+              if (move.score > bestScore) {
+                bestScore = move.score;
+                bestMove = move;
+              }
+            });
+          } else {
+            let bestScore = Infinity;
+            moves.forEach((move) => {
+              if (move.score < bestScore) {
+                bestScore = move.score;
+                bestMove = move;
+              }
+            });
+          }
+
+          return bestMove;
+        }
+
+        // Utility Function to Check Winner for Minimax
+        function checkWin(board, player) {
+          return winningPatterns.some((pattern) =>
+            pattern.every((index) => board[index].innerText === player)
+          );
+        }
+
+        document.getElementById("p2").addEventListener("click", p2_p);
+        document.getElementById("p1").addEventListener("click", p1_p);
+
+        document
+          .getElementById("btn_to_reset")
+          .addEventListener("click", resetGame);
+      });
+    </script>
+  </body>
+</html>

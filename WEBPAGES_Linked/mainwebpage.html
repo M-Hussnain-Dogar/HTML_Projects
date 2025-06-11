@@ -1,0 +1,120 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Main web page</title>
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <link
+            rel="stylesheet"
+            href="webpage.css" />
+    </head>
+
+    <body>
+        <header>
+            <div id="name">
+                <h1>Webpage</h1>
+            </div>
+
+            <div id="links">
+                <span>
+                    <a
+                        href="calculatoPARA.html">calculator</a>
+                    <a href="#help">Help</a>
+
+                    <a href="#tools">Tools</a>
+                    <div id="details">
+                        <p>More</p>
+                        <div id="summ">
+                            <div id="extra">
+                                <a href="#about us">About US</a>
+                                <a href="#copy">Copyright</a>
+                                <a href="#contact_us">Contact us</a>
+                                <a
+                                    href="PARA.html">Make
+                                    many para</a>
+                                <a
+                                    href="practise.html">Preview
+                                    Code</a>
+                                <a
+                                    href="Number calculation.html">Number</a>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <div id="search">
+                <input type="search" id="search-box"
+                    placeholder="search here ..." />
+                <button id="icon"><ion-icon
+                        name="search-sharp"></ion-icon></button>
+            </div>
+        </header>
+        <main>
+            <div id="log-in">
+                <h1>Log in here</h1>
+                <label for="email" id="e-mail">E-mail:</label>
+                <input type="email" placeholder="example@gmail.com"
+                    id="inputno1" />
+                <div id="line1"></div>
+                <label for="password" id="pass">Password:</label>
+                <input
+                    type="password"
+                    placeholder="Enter your password here.."
+                    id="inputno2" />
+                <div id="line2"></div>
+                <button id="btn-to-submit-log_in"
+                    class="submit_the_ids">Login</button>
+
+                <div id="sign">
+                    <p>Don`t have an <a href="#signup">account</a></p>
+                    <div id="aggriment">
+                        <p>
+                            By clicking on the above<br />
+                            button you will agree about <br /><a
+                                href="#term&piracy">term & privacy</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="info">
+                <h1>About this webpage</h1>
+                <p>
+                    This webpage is a simple webpage containing some hyperlinks.
+                    This
+                    webpage is make in
+                    <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+                        target="_blanks">HTML language</a>
+                    (Hyper Link marking up language).
+                </p>
+            </div>
+            <div id="alert">
+                <p>We offer cookies</p>
+                <button id="btn_to_acept">Accept</button>
+                <button id="btn_to_becline">Decline</button>
+            </div>
+        </main>
+        <script>
+      const btn_accept = document.getElementById("btn_to_acept");
+      const btn_decline = document.getElementById("btn_to_becline");
+      const sec_cookies = document.getElementById("alert");
+
+      btn_accept.addEventListener("click", () => {
+        sec_cookies.style.display = "none";
+        alert("Thanks for trust.");
+      });
+
+      btn_decline.addEventListener("click", () => {
+        sec_cookies.style.display = "none";
+
+    })
+    </script>
+    </body>
+</html>

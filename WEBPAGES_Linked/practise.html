@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <script type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="webpage.css" />
+    </head>
+
+    <body>
+        <header>
+            <div id="name">
+                <h1>Webpage</h1>
+            </div>
+
+            <div id="links">
+                <span>
+                    <a
+                        href="mainwebpage.html">Home</a>
+                    <a href="#help">Help</a>
+
+                    <a href="#tools">Tools</a>
+                    <div id="details">
+                        <p>More</p>
+                        <div id="summ">
+                            <div id="extra">
+                                <a href="#about us">About US</a>
+                                <a href="#copy">Copyright</a>
+                                <a href="#term">Term & Privacy</a>
+                                <a href="#contact_us">Contact us</a>
+                                <a
+                                    href="PARA.html">Make
+                                    many para</a>
+                                <a
+                                    href="calculatoPARA.html">Calculator</a>
+                                <a
+                                    href="Number calculation.html">Number</a>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <div id="search">
+                <input type="search" id="search-box"
+                    placeholder="search here ..." />
+                <button id="icon"><ion-icon
+                        name="search-sharp"></ion-icon></button>
+            </div>
+        </header>
+        <main>
+            <div id="make_Code_see_preview">
+                <h1>Simple example example.</h1>
+                <div id="options">
+                    <p id="p1">Code</p>
+                    <p id="p2">Preview</p>
+                </div>
+                <div id="main">
+
+                    <textarea type="text" id="n1"
+                        placeholder="Write Code to display output here..."><p>This is a sample text.</p></textarea>
+                </div>
+            </div>
+        </main>
+        <script>
+        let input = document.getElementById('n1');
+        const p1 = document.getElementById('p2');
+        const p2 = document.getElementById('p1');
+        const main = document.getElementById('main');
+        // create a div element
+
+        const div_element = document.createElement('div');
+        div_element.id = 'output';
+        div_element.style.display = 'none';
+        main.appendChild(div_element);
+
+        const shadow = div_element.attachShadow({ mode: 'open' });
+        const prediv = document.createElement('div');
+
+        shadow.appendChild(prediv);
+
+        //add listener
+        p1.addEventListener('click', () => {
+            div_element.style.display = 'block';
+            input.style.display = 'none';
+            prediv.innerHTML = input.value;
+        });
+        p2.addEventListener('click', () => {
+            div_element.style.display = 'none';
+            input.style.display = 'block';
+        })
+       
+    </script>
+    </body>
+
+</html>

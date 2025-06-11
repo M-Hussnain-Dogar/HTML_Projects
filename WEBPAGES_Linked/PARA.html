@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="webpage.css" />
+    </head>
+    <style>
+        #function_to_create_p_para p {
+    white-space: pre-wrap;
+}
+    </style>
+    <body>
+        <header>
+            <div id="name">
+                <h1>Webpage</h1>
+            </div>
+
+            <div id="links">
+                <span>
+                    <a href="#back" id="Back" style="display: none;">back</a>
+                    <a
+                        href="mainwebpage.html">Home</a>
+                    <a href="#help">Help</a>
+
+                    <a href="#tools">Tools</a>
+                    <div id="details">
+                        <p>More</p>
+                        <div id="summ">
+                            <div id="extra">
+                                <a href="#about us">About US</a>
+                                <a href="#copy">Copyright</a>
+                                <a href="#term">Term & Privacy</a>
+                                <a href="#contact_us">Contact us</a>
+                                <a
+                                    href="practise.html">preview</a>
+                                <a
+                                    href="calculatoPARA.html">Calculate</a>
+                                <a
+                                    href="Number calculation.html">Number</a>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <div id="search">
+                <input type="search" id="search-box"
+                    placeholder="search here ..." />
+                <button id="icon"><ion-icon
+                        name="search-sharp"></ion-icon></button>
+            </div>
+        </header>
+        <main>
+            <div id="main_for_input_para">
+                <h1>Make many paragraphs</h1>
+                <div id="input_for_para">
+                    <label for="Paragraph">
+                        <input type="text" id="text_1"
+                            value="This is a sample paragraph."
+                            placeholder="Enter a paragraph here ...">
+                        <input type="number" id="num1" min="1" max="4000"
+                            value="20"
+                            placeholder="Enter a number here between 1-4000">
+                        <input type="number" id="num2" min="1" max="4000"
+                            value="2"
+                            placeholder="Enter a number here between 1-4000">
+                        <button onclick="Calculate()">Submit</button>
+                    </div>
+                </div>
+            </main>
+            <script>
+                function Calculate() {
+                    let input2 = parseFloat(document.getElementById("num2").value);
+                    let input1 = parseFloat(document.getElementById("num1").value);
+                    let para = document.getElementById("text_1").value;
+                    let sec1 = document.getElementById("main_for_input_para");
+                    let back = document.getElementById("Back");
+                
+                    if (input1 < 1 || input1 > 4000 || input2 < 1 || input2 > 4000) {
+                        alert("Please enter the value in input no. 1 between 20-4000 and in input no. 2 between 2-4000");
+                        return;
+                    }
+                
+                    if (!isNaN(input2) && para.trim() !== "" && !isNaN(input1)) {
+                        sec1.style.display = "none";
+                        back.style.display = "block";
+                
+                        let sec2 = document.getElementById("function_to_create_p_para");
+                
+                        if (sec2) {
+                            sec2.innerHTML = ""; // Clear existing content
+                        } else {
+                            sec2 = document.createElement("div");
+                            sec2.id = "function_to_create_p_para";
+                            document.getElementsByTagName("main")[0].appendChild(sec2);
+                        }
+                
+                        for (let i = 0; i < input2; i++) {
+                            let p = document.createElement("p");
+                            p.innerText = para.repeat(input1);
+                            sec2.appendChild(p);
+                        }
+                
+                        sec2.style.display = "block";
+                    } else {
+                        alert("Please enter a valid number or fill the input field correctly.");
+                    }
+                }
+                
+                // Back Button Functionality
+                document.getElementById("Back").addEventListener("click", () => {
+                    let sec1 = document.getElementById("main_for_input_para");
+                    let sec2 = document.getElementById("function_to_create_p_para");
+                    let back = document.getElementById("Back");
+                
+                    sec1.style.display = "block";
+                    if (sec2) sec2.style.display = "none";
+                    back.style.display = "none";
+                });
+                </script>
+
+        </script>
+    </body>
+
+</html>

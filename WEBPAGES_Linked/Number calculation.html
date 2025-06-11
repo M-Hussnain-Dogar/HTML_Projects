@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marks Calculator</title>
+        <link rel="stylesheet" href="webpage.css">
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <!--
+        <style>
+            
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f0f4f8, #ffffff);
+            margin: 0;
+            padding: 0 20px;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #2a4d69;
+        }
+
+        .subject-list,
+        .inputs-container,
+        .results {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .subject-list input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .inputs-container div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .inputs-container div:last-child {
+            border-bottom: none;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: right;
+        }
+
+        .results {
+            text-align: center;
+        }
+
+        .results p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        #grade {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .error {
+            text-align: center;
+            color: red;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+            
+    </style>-->
+    </head>
+
+    <body>
+        <header>
+            <div id="name">
+                <h1>Webpage</h1>
+            </div>
+
+            <div id="links">
+                <span>
+                    <a
+                        href="mainwebpage.html">Home</a>
+                    <a href="#help">Help</a>
+
+                    <a href="#tools">Tools</a>
+                    <div id="details">
+                        <p>More</p>
+                        <div id="summ">
+                            <div id="extra">
+                                <a href="#about us">About US</a>
+                                <a href="#copy">Copyright</a>
+                                <a href="#contact_us">Contact us</a>
+                                <a
+                                    href="PARA.html">Make
+                                    many para</a>
+                                <a
+                                    href="practise.html">Preview
+                                    Code</a>
+                                <a
+                                    href="calculatoPARA.html">Calculator</a>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <div id="search">
+                <input type="search" id="search-box"
+                    placeholder="search here ..." />
+                <button id="icon"><ion-icon
+                        name="search-sharp"></ion-icon></button>
+            </div>
+        </header>
+        <main>
+            <div id="mainsubjects_fot_select">
+                <h1>Marks Calculator</h1>
+
+                <div id="subject-list">
+                    <h2>Select Subjects</h2>
+                    <label><input type="checkbox" value="Maths"> Maths</label>
+                    <label><input type="checkbox" value="Physics">
+                        Physics</label>
+                    <label><input type="checkbox" value="Chemistry">
+                        Chemistry</label>
+                    <label><input type="checkbox" value="Urdu"> Urdu</label>
+                    <label><input type="checkbox" value="English">
+                        English</label>
+                    <label><input type="checkbox" value="History">
+                        History</label>
+                    <label><input type="checkbox" value="Social Studies"> Social
+                        Studies</label>
+                    <label><input type="checkbox" value="Islamiat">
+                        Islamiat</label>
+                    <label><input type="checkbox" value="Targama-tul-Quran">
+                        Targama-tul-Quran</label>
+                    <label><input type="checkbox" value="Nazra"> Nazra</label>
+                    <label><input type="checkbox" value="Computer science">
+                        Computer
+                        science</label>
+                    <label><input type="checkbox" value="Biology">
+                        Biology</label>
+                    <label><input type="checkbox" value="Countdown"> Count
+                        own</label>
+                    <label><input type="checkbox" value="Wakfiat-e-amam">
+                        Wakfiat-e-amam</label>
+                    <label><input type="checkbox" value="Pak studies"> Pak
+                        studies</label>
+                    <button id="showInputs">Show Inputs</button>
+                </div>
+
+                <div id="inputs-container"></div>
+
+                <button id="calculate">Calculate</button>
+
+                <div id="results">
+                    <p>Total Marks: <span id="totalMarks">0</span></p>
+                    <p>Obtained Marks: <span id="obtainedMarks">0</span></p>
+                    <p>Percentage: <span id="percentage">0</span>%</p>
+                    <p>Grade: <span id="grade">-</span></p>
+                </div>
+
+                <div class="error" id="error"></div>
+            </div>
+        </main>
+        <script>
+        const showInputsBtn = document.getElementById('showInputs');
+        const calculateBtn = document.getElementById('calculate');
+        const inputsContainer = document.querySelector('#inputs-container');
+        const errorDiv = document.getElementById('error');
+        const totalMarksEl = document.getElementById('totalMarks');
+        const obtainedMarksEl = document.getElementById('obtainedMarks');
+        const percentageEl = document.getElementById('percentage');
+        const gradeEl = document.getElementById('grade');
+
+        const gradeScale = (percentage) => {
+            if (percentage >= 90) return 'A+';
+            if (percentage >= 80) return 'A';
+            if (percentage >= 70) return 'B';
+            if (percentage >= 60) return 'C';
+            if (percentage >= 50) return 'D';
+            return 'F';
+        };
+
+        showInputsBtn.addEventListener('click', () => {
+            const selectedSubjects = Array.from(
+                document.querySelectorAll('#subject-list input[type="checkbox"]:checked')
+            ).map(checkbox => checkbox.value);
+
+            if (selectedSubjects.length === 0) {
+                errorDiv.textContent = 'Please select at least one subject.';
+                return;
+            }
+
+            errorDiv.textContent = '';
+            inputsContainer.innerHTML = '';
+            selectedSubjects.forEach(subject => {
+                const inputDiv = document.createElement('div');
+                inputDiv.innerHTML = `
+          <label>${subject} - Total Marks: 
+            <input type="number" class="total" data-subject="${subject}" min="0">
+          </label>
+          <label> Gained Marks: 
+            <input type="number" class="gained" data-subject="${subject}" min="0">
+          </label>
+        `;
+                inputsContainer.appendChild(inputDiv);
+            });
+        });
+
+        calculateBtn.addEventListener('click', () => {
+            const totalInputs = document.querySelectorAll('.total');
+            const gainedInputs = document.querySelectorAll('.gained');
+
+            let totalMarks = 0;
+            let obtainedMarks = 0;
+            let hasError = false;
+
+            totalInputs.forEach((totalInput, index) => {
+                const gainedInput = gainedInputs[index];
+                const totalValue = parseFloat(totalInput.value);
+                const gainedValue = parseFloat(gainedInput.value);
+
+                if (isNaN(totalValue) || isNaN(gainedValue)) {
+                    errorDiv.textContent = 'Please fill in all the marks fields correctly.';
+                    hasError = true;
+                    return;
+                }
+                if (gainedValue > totalValue) {
+                    errorDiv.textContent = 'Gained marks cannot exceed total marks.';
+                    hasError = true;
+                    return;
+                }
+
+                totalMarks += totalValue;
+                obtainedMarks += gainedValue;
+            });
+
+            if (hasError) return;
+
+            errorDiv.textContent = '';
+            const percentage = ((obtainedMarks / totalMarks) * 100).toFixed(5);
+            const grade = gradeScale(percentage);
+
+            totalMarksEl.textContent = totalMarks;
+            obtainedMarksEl.textContent = obtainedMarks;
+            percentageEl.textContent = percentage;
+            gradeEl.textContent = grade;
+        });
+    </script>
+    </body>
+
+</html>
