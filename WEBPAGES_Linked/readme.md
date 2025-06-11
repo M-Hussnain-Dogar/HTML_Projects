@@ -16,8 +16,7 @@ This project is a collection of web-based tools built using **HTML**, **CSS**, a
 ├── Number calculation.html # Code-to-preview converter  
 ├── calculatoPARA.html # Scientific calculator  
 ├── webpage.css # Shared stylesheet  
-├── script.js (inline in HTML) # JavaScript logic (per page)  
-└── README.md # This file  
+└── script.js (inline in HTML) # JavaScript logic (per page)  
 
 ---
 
