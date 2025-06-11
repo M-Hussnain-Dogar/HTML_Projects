@@ -1,0 +1,85 @@
+body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .clock {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      border: 8px solid #222;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .center-dot {
+      width: 12px;
+      height: 12px;
+      background: #000;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: bottom center;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .hand.hour {
+      height: 60px;
+      width: 6px;
+      background: #000;
+      z-index: 3;
+    }
+
+    .hand.minute {
+      height: 90px;
+      width: 4px;
+      background: #555;
+      z-index: 2;
+    }
+
+    .hand.second {
+      height: 100px;
+      width: 2px;
+      background: red;
+      z-index: 1;
+    }
+
+    .number {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      font-size: 1em;
+      color: #222;
+      transform: translate(-50%, -50%);
+    }
+
+    .digital {
+      font-size: 2em;
+      font-weight: bold;
+      background: #222;
+      color: #0f0;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
